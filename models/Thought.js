@@ -16,7 +16,7 @@ var ThoughtSchema = new Schema({
 });
 
 // Create the Comment model with the CommentSchema
-var Comment = mongoose.model("Thought", CommentSchema);
+var Thought = mongoose.model("Thought", ThoughtSchema);
 
 // Export the Comment model
 module.exports = Thought;
