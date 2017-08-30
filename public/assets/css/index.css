@@ -8,3 +8,8 @@
 .jumbotron h1 {
     text-align: center;
 }
+
+img {
+    padding-bottom: 100px;
+    border-bottom: 1px solid #ccc;
+}
