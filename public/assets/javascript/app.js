@@ -36,11 +36,9 @@ $('#scrapeBtn').on("click", function(){
 
 
 
-// Whenever someone clicks a p tag
+// Whenever someone clicks a h2 tag
 $(document).on("click", "h2", function() {
-  // Empty the thoughts from the thought section
-  $("#thoughts").empty();
-  // Save the id from the p tag
+  // Save the id from the h2 tag
   var thisId = $(this).attr("data-id");
 
   // Now make an ajax call for the Article
@@ -52,13 +50,15 @@ $(document).on("click", "h2", function() {
     .done(function(data) {
       console.log(data);
       // The title of the article
-      $("#thoughts").append("<h2>" + data.title + "</h2>");
+      $("#thoughts").append("<h5>" + data.title + "</h5>");
       // An input to enter a new title
-      $("#thoughts").append("<input id='titleinput' name='title' >");
+      $("#thoughts").append("<input id='titleinput' name='title' class='form-control' type='text' placeholder='Title your Thought'>");
       // A textarea to add a new thought body
-      $("#thoughts").append("<textarea id='bodyinput' name='body'></textarea>");
+      $("#thoughts").append("<textarea id='bodyinput' name='body' class='form-control' type='text' placeholder='Your Thought'></textarea>");
+
       // A button to submit a new thought, with the id of the article saved to it
-      $("#thoughts").append("<button data-id='" + data._id + "' id='savethought'>Save Thought</button>");
+      $("#thoughtsFooter").append("<button data-id='" + data._id + "' id='savethought'>Save Thought</button>");
+      $('#myModal').modal("toggle");
 
       // If there's a thought in the article
       if (data.thought) {
@@ -92,9 +92,9 @@ $(document).on("click", "#savethought", function() {
       console.log(data);
       // Empty the thoughts section
       $("#thoughts").empty();
+      $('#thoughtsFooter').empty();
     });
-
-  // Also, remove the values entered in the input and textarea for thought entry
-  $("#titleinput").val("");
-  $("#bodyinput").val("");
+    $('#myModal').modal("toggle");
+    $("#titleinput").val("");
+    $("#bodyinput").val("");
 });
