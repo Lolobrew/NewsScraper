@@ -2,38 +2,27 @@ $('#scrapeBtn').on("click", function(){
   $.ajax({
     method: "GET",
     url: "/scrape"
-  }).done(function(data) {
-    //display articles after a timeout so it has time to retrieve info and post to articles api route
-    function showArticles() {
-      setTimeout(function(){
-        $.getJSON("/articles", function(data) {
-          // For each one
-          for (var i = 0; i < data.length; i++) {
-            // Display the apropos information on the page
-            $("#articles").append("<h2 data-id='" + data[i]._id + "'>" + data[i].title + "</h2><br/><h4>" + data[i].summary + "</h4><br/><img src='http://www.technewsworld.com/" + data[i].link + "'/><br>");
-          }
-              //empty btn div, dynamically create a clear button for deleting data
-              $('#btnDiv').empty();
-              $('#btnDiv').append("<btn class='btn btn-warning' id='clearIt'>Clear It</btn>");
-              $('#clearIt').on("click", function(){
-                $('#thoughts').empty();
-                $('#articles').empty();
-                $.ajax({
-                  method: "GET",
-                  url: "/delete"
-                }).done(function(data){
-                  window.location.replace("http://localhost:8080");
-                })
-              });
-        });
-      }, 2000);
-    }
+  }).done(function(data){
 
-    showArticles();
+    setTimeout(function getArticles(){
+      window.location.replace("http://localhost:8080/articles");
+    }, 2000);
+    
+    getArticles();
 
   });
 });
 
+
+
+$('#clearBtn').on('click', function(e){
+  $.ajax({
+    method: "GET",
+    url: "/delete"
+  }).done(function(data){
+    window.location.replace("http://localhost:8080/");
+  });
+});
 
 
 // Whenever someone clicks a h2 tag

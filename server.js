@@ -1,10 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
-var request = require("request");
-var cheerio = require("cheerio");
-var Comment = require("./models/Thought.js");
-var Article = require("./models/Article.js");
+var exphbs = require("express-handlebars");
+
 
 var PORT = process.env.PORT || 8080;
 
@@ -20,7 +18,6 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.locals.assets = "/public/assets";
 app.use("/public", express.static("public"));
 
-var exphbs = require("express-handlebars");
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");

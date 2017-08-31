@@ -10,7 +10,7 @@ module.exports = function(app) {
         res.render("index",
             {
                 layout: "main",
-                css: "index.css"
+                css: "app.css"
             }
         );
     });
@@ -60,16 +60,13 @@ module.exports = function(app) {
     
     // This will get the articles we scraped from the mongoDB
     app.get("/articles", function(req, res) {
-      // Grab every doc in the Articles array
-      Article.find({}, function(error, doc) {
-        // Log any errors
-        if (error) {
-          console.log(error);
-        }
-        // Or send the doc to the browser as a json object
-        else {
-          res.json(doc);
-        }
+      Article.find({}).then(function(data){
+        res.render('articles', 
+          {
+            article_data: data,
+            layout: "main",
+            css: "app.css"
+          });
       });
     });
 
@@ -131,7 +128,7 @@ module.exports = function(app) {
         if (err){
           console.log(err);
         } else {
-          res.send("Data Cleared");
+          res.send("Articles Removed");
         }
       });
 

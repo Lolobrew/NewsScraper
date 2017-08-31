@@ -1,0 +1,35 @@
+<div class="jumbotron">
+        <h1>Welcome to the news scraper for TechNewsWorld!</h1>
+</div>
+<div class = "row">
+    <div class = "col-sm-4 col-sm-offset-10" id="btnDiv">
+        <btn class="btn btn-warning" id="clearBtn">Clear It!</btn>
+    </div>
+</div>
+<div class="row">
+    {{#each article_data}}
+    <div class="col-lg-8 col-lg-offset-2">
+        <h2>{{this.title}}</h2></br>
+        <p>{{this.summary}}</p></br>
+        <img src="http://www.technewsworld.com{{this.link}}">
+    </div>
+    {{/each}}
+</div>
+<div class="modal fade" id="myModal">
+    <div class ="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add your thought!</h5>
+                <button type = "button" class="close" data-dismiss="modal" aria-label-"Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="thoughts"></div>
+            <div class="modal-footer" id="thoughtsFooter"></div>
+        </div>
+    </div>
+</div>
+    <!-- jquery cdn -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{assets}}/javascript/app.js"></script>
