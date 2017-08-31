@@ -5,7 +5,7 @@ $('#scrapeBtn').on("click", function(){
   }).done(function(data){
 
     setTimeout(function getArticles(){
-      window.location.replace("http://localhost:8080/articles");
+      window.location.replace("https://shielded-hollows-60372.herokuapp.com/articles");
     }, 2000);
     
     getArticles();
@@ -20,7 +20,7 @@ $('#clearBtn').on('click', function(e){
     method: "GET",
     url: "/delete"
   }).done(function(data){
-    window.location.replace("http://localhost:8080/");
+    window.location.replace("https://shielded-hollows-60372.herokuapp.com/");
   });
 });
 

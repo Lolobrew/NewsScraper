@@ -26,7 +26,7 @@ require("./routes/all-routes.js")(app);
 
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/newsscraperdb", {
+mongoose.connect("mongodb://heroku_s2cm2qzh:g33h3o56k8jee83j9u3ichsuo8@ds119044.mlab.com:19044/heroku_s2cm2qzh", {
     useMongoClient: true
   });
   var db = mongoose.connection;
